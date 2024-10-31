@@ -1,0 +1,657 @@
+{
+  "compilerOptions": {
+    /* Visit https://aka.ms/tsconfig to read more about this file */
+
+    /* Projects */
+    /** 
+      Saat incremental diatur ke true, TypeScript akan menyimpan metadata tentang 
+      kompilasi terakhir ke dalam file .tsbuildinfo di direktori output (misalnya dist/). 
+      File ini berisi informasi mengenai status kompilasi dari setiap file dalam proyek, 
+      sehingga pada kompilasi berikutnya TypeScript dapat melewati file yang tidak mengalami 
+      perubahan.
+
+      "incremental": true
+    */ "incremental": true,
+
+    /** 
+      Pengaturan composite: true mengaktifkan kompilasi incremental secara otomatis. 
+      Ini memungkinkan TypeScript untuk mengingat hasil kompilasi sebelumnya dalam file 
+      .tsbuildinfo, sehingga hanya mengkompilasi ulang bagian yang berubah, 
+      yang mempercepat kompilasi proyek besar
+
+      "composite": true
+    */ "composite": true,
+
+    /** 
+      Opsi ini memungkinkan Anda menentukan lokasi spesifik untuk menyimpan file .tsbuildinfo. 
+      Jika tidak ditentukan, TypeScript akan menempatkan file .tsbuildinfo di direktori 
+      output (outDir) atau di direktori proyek
+      
+      "tsBuildInfoFile": "./.tsbuildinfo" 
+    */
+
+    /** 
+      Ketika opsi ini disetel ke true, TypeScript akan menghindari penggunaan file sumber .ts 
+      dari proyek yang dirujuk dan sebaliknya menggunakan file deklarasi .d.ts yang sudah 
+      dikompilasi.
+      
+      "disableSourceOfProjectReferenceRedirect": true 
+    */
+
+    /** 
+      Ketika diatur ke true, TypeScript tidak akan mencoba mencari file konfigurasi TypeScript 
+      (tsconfig.json) di tingkat yang lebih tinggi dalam struktur folder. Artinya, 
+      TypeScript hanya akan memuat file konfigurasi yang secara eksplisit disebutkan 
+      tanpa mengimpor atau memuat proyek dari direktori induk yang lebih tinggi secara otomatis.
+    
+      "disableSolutionSearching": true
+    */
+
+    /** 
+      Opsi ini, jika diatur ke true, mencegah TypeScript dari memuat proyek yang 
+      dirujuk ketika proyek utama sedang dikompilasi
+      
+      "disableReferencedProjectLoad": true
+    */
+
+    /* Language and Environment */
+    /** 
+      memungkinkan Anda untuk mengatur versi JavaScript yang diinginkan sebagai output
+
+      "target": "es2016"
+    */
+    "target": "ES6" /* Set the JavaScript language version for emitted JavaScript and include compatible library declarations. */,
+
+    /** 
+      Opsi ini memungkinkan Anda untuk menentukan satu atau lebih pustaka yang akan 
+      digunakan dalam proyek TypeScript Anda
+
+      "lib": ["DOM", "ES2015"]
+    */ "lib": ["DOM", "ES2015"],
+
+    // "jsx": "preserve",                                /* Specify what JSX code is generated. */
+
+    /** 
+      Ketika opsi ini diatur ke true, TypeScript akan memungkinkan penggunaan dekorator
+      dalam kode Anda. Anda dapat mendefinisikan dan menerapkan dekorator untuk kelas, 
+      metode, properti, dan parameter
+
+      "experimentalDecorators": true
+    */ "experimentalDecorators": true,
+
+    /** 
+      Ketika opsi ini diatur ke true, TypeScript akan menghasilkan metadata tambahan 
+      yang berisi informasi tipe untuk parameter dan properti yang didekorasi. 
+      Metadata ini sangat berguna untuk refleksi, memungkinkan kerangka kerja untuk mengetahui 
+      tipe data saat runtime.
+    
+      "emitDecoratorMetadata": true
+    */ "emitDecoratorMetadata": true,
+
+    // ================= FOR JSX ======================
+    // "jsxFactory": "",                                 /* Specify the JSX factory function used when targeting React JSX emit, e.g. 'React.createElement' or 'h'. */
+    // "jsxFragmentFactory": "",                         /* Specify the JSX Fragment reference used for fragments when targeting React JSX emit e.g. 'React.Fragment' or 'Fragment'. */
+    // "jsxImportSource": "",                            /* Specify module specifier used to import the JSX factory functions when using 'jsx: react-jsx*'. */
+    // "reactNamespace": "",                             /* Specify the object invoked for 'createElement'. This only applies when targeting 'react' JSX emit. */
+    // ================= FOR JSX ======================
+
+    /** 
+      mengatur noLib ke true, TypeScript tidak akan menyertakan file definisi tipe standar.
+      Dengan kata lain, Anda tidak akan memiliki akses ke tipe-tipe global yang
+      disediakan oleh pustaka ini.
+
+      "noLib": true
+    */
+
+    /** 
+      mengontrol cara penanganan properti kelas saat menggunakan sintaks kelas ECMAScript,
+       khususnya dalam konteks pengkodean dengan class fields
+        (fitur yang memperkenalkan properti kelas secara langsung di dalam kelas)
+    
+        "useDefineForClassFields": true
+    */
+
+    /** 
+      memberikan kontrol atas cara TypeScript mendeteksi apakah file merupakan modul atau skrip global
+      
+      "moduleDetection": "auto",
+    */
+
+    /* Modules */
+    /** 
+      untuk menentukan sistem modul yang akan digunakan dalam proyek Anda. 
+      Ini mengatur bagaimana TypeScript mengkompilasi file-file TypeScript menjadi JavaScript
+      dan bagaimana sistem modul tersebut berinteraksi satu sama lain
+
+      "module": "commonjs"
+    */
+    "module": "commonjs",
+
+    /** 
+      menentukan direktori akar dari sumber kode TypeScript Anda
+    */ "rootDir": "./src",
+
+    /** 
+      menentukan strategi yang diikuti oleh TypeScript untuk memecahkan modul 
+      saat mencari file yang diimpor
+
+      "moduleResolution": "Node"
+    */
+    "moduleResolution": "Node",
+
+    /** 
+      untuk menentukan direktori dasar untuk resolusi jalur relatif dalam proyek Anda
+      diatur ke "./" karena rootDir sudah ke ./src
+
+      "baseUrl": "./"
+    */ "baseUrl": "./",
+
+    /** 
+      digunakan untuk menentukan alias atau jalur yang dapat digunakan untuk mengimpor 
+      modul dalam proyek Anda
+    
+      "paths": {
+        "@utils/*": ["utils/*"]
+      },
+    */
+    "paths": {
+      "@root/*": ["src/*"],
+      "@util/*": ["src/utils/*"],
+      "@model/*": ["src/models/*"],
+      "@route/*": ["src/routes/*"],
+      "@infrastructure/*": ["src/infrastructures/*"]
+      // .....
+    },
+
+    /** 
+      ini berfungsi apabila developer memisahkan folder utama ke folder utama lainya, seperti
+      jika folder utama di src, maka bisa menambahkan folder utama di folder lain 
+      yang setara denan src
+      
+      "rootDirs": ["src", "lib"],
+    */
+
+    /** 
+      digunakan untuk menentukan direktori di mana TypeScript 
+      mencari paket definisi tipe (type definitions)
+      
+      "typeRoots": ["./node_modules/@types"],
+    */
+
+    /** 
+      untuk menentukan daftar paket definisi tipe (type definition) yang akan digunakan 
+      dalam proyek Anda. Dengan menggunakan opsi ini, Anda dapat mengontrol dan membatasi 
+      paket yang diambil oleh TypeScript untuk menyediakan tipe untuk pustaka pihak ketiga
+      
+      "types": [],
+    */
+
+    /** 
+      memberikan kemudahan dalam mengintegrasikan pustaka UMD ke dalam proyek TypeScript Anda.
+      Ini memungkinkan akses ke variabel global dari pustaka tersebut
+      
+      "allowUmdGlobalAccess": true 
+    */
+
+    /** 
+      apabila ada 2 file dengan nama yang sama, tetapi bisa beda ekstensi
+      
+      "moduleSuffixes": ["js", "ts"]
+      
+      "moduleSuffixes": [],
+    */
+
+    /**
+      Pada mulanya apabila melakukan import tidak diperlukan .ts. seperti:
+      import data from "./data"
+      nah apabila memberikan true, maka bisa seperti
+      import data from "./data.ts"
+      
+      "allowImportingTsExtensions": true
+    */
+
+    /** 
+      tujuanya agar bisa melakukan export di package.json
+
+      "resolvePackageJsonExports": true,
+    */
+
+    /** 
+      tujuanya agar bisa melakukan import di package.json
+
+      "resolvePackageJsonImports": true,
+    */
+
+    /** 
+      Ini memungkinkan Anda untuk mengubah cara TypeScript menangani resolusi modul 
+      berdasarkan kondisi tertentu yang Anda tentukan. Misalnya, ini bisa berguna untuk 
+      menentukan berbagai versi modul berdasarkan lingkungan
+      
+      "customConditions": [],
+    */
+
+    /** 
+      Jika diaktifkan, TypeScript akan memberikan peringatan atau kesalahan jika 
+      Anda mengimpor modul yang mungkin memiliki efek samping tanpa menggunakannya 
+      di dalam kode Anda.
+      
+      "noUncheckedSideEffectImports": true
+    */
+
+    /** 
+      Dengan mengaktifkan opsi ini, Anda dapat mengimpor file JSON ke dalam kode 
+      TypeScript Anda dan menggunakan data yang ada di dalamnya sebagai objek 
+      JavaScript yang biasa
+
+      "resolveJsonModule": true
+    */
+    "resolveJsonModule": true,
+
+    /** 
+      Dengan mengaktifkan opsi ini, Anda dapat menggunakan file yang memiliki 
+      ekstensi yang tidak dikenali oleh TypeScript, termasuk file dengan ekstensi 
+      khusus yang mungkin digunakan dalam proyek tertentu
+      
+      "allowArbitraryExtensions": true 
+    */
+
+    /** 
+      Dengan noResolve diaktifkan, TypeScript tidak akan mencari file tipe 
+      yang diperlukan untuk modul yang diimpor.
+      
+      "noResolve": true,
+    */
+
+    /* JavaScript Support */
+    /**
+      jika true, mengizinkan kode bersama typescript dan javascript secara bersamaan 
+      "allowJs": true,
+    */
+
+    /** 
+      TypeScript akan melakukan pemeriksaan kesalahan tipe dan analisis pada file JavaScript,
+       memberikan manfaat tambahan kepada pengembang yang mungkin tidak menggunakan TypeScript
+        sepenuhnya, tetapi ingin mendapatkan keuntungan dari sistem tipe TypeScript
+        
+        "checkJs": true
+    */
+
+    /** 
+      menetapkan maxNodeModuleJsDepth ke nilai tertentu (misalnya, 2), 
+      TypeScript hanya akan menelusuri dua tingkat ke dalam direktori node_modules. 
+      Ini berarti jika ada file .js yang dibutuhkan di tingkat ketiga atau lebih dalam, 
+      TypeScript tidak akan menemukannya
+      
+      "maxNodeModuleJsDepth": 1
+    */
+
+    /* Emit */
+    // "declaration": true,                              /* Generate .d.ts files from TypeScript and JavaScript files in your project. */
+    // "declarationMap": true,                           /* Create sourcemaps for d.ts files. */
+    // "emitDeclarationOnly": true,                      /* Only output d.ts files and not JavaScript files. */
+
+    /** 
+      untuk menghasilkan file peta sumber (source map), yang memungkinkan pemetaan 
+      antara kode JavaScript yang telah dikompilasi dan kode TypeScript aslinya
+
+      "sourceMap": true
+    */ "sourceMap": true,
+
+    // "inlineSourceMap": true,                          /* Include sourcemap files inside the emitted JavaScript. */
+
+    /** 
+      jika ini di set ke true, maka saat kompilasi .js tidak akan ada 
+      
+      "noEmit": true,
+    */
+
+    /** 
+      untuk mengatur nama file output yang dihasilkan setelah proses kompilasi dan 
+      menggabungkan semua file TypeScript yang diimpor (termasuk file sumber) 
+      ke dalam satu file JavaScript.
+      
+      "outFile": "./",
+    */
+
+    /** 
+      mengatur direktori output
+
+      "outDir": "dist"
+    */
+    "outDir": "dist",
+
+    /** 
+      menghapus komen saat dikompilasi baik tunggal atau multi baris
+
+      "removeComments": true
+    */
+    "removeComments": true,
+
+    /** 
+      untuk mengontrol apakah TypeScript akan mengimpor fungsi utilitas dari file 
+      tslib daripada menghasilkan salinan kode untuk fungsi tersebut di setiap file 
+      yang menggunakannya. 
+      
+      "importHelpers": true
+    */
+
+    /** 
+      digunakan untuk mengaktifkan iterasi yang lebih baik pada kode yang ditargetkan 
+      ke versi JavaScript yang lebih rendah, seperti ES5 atau ES6. 
+      Ketika opsi ini diaktifkan, TypeScript akan mengubah cara penanganan iterasi, 
+      terutama untuk objek iterable seperti Array, Set, Map, dan lainnya, 
+      agar dapat berfungsi dengan baik di lingkungan yang tidak mendukung fitur iterasi modern.
+
+      "downlevelIteration": true
+    */
+    "downlevelIteration": true,
+
+    /**
+      untuk menentukan jalur akar untuk file sumber dalam sourcemap yang dihasilkan
+      
+      "sourceRoot": "" 
+    */
+
+    /** 
+      untuk menentukan lokasi akar untuk file source map yang dihasilkan
+      
+      "mapRoot": "" 
+    */
+
+    /** 
+      untuk mengontrol apakah file sumber TypeScript yang dikompilasi akan disertakan 
+      langsung di dalam file sumber map (.js.map).
+      
+      "inlineSources": true ,
+    */
+
+    /** 
+      membantu aplikasi dan editor teks dalam mengenali encoding file
+
+      "emitBOM": true
+    */
+
+    /**
+      Windows: Defaultnya adalah CRLF (\r\n)
+      Unix/Linux/Mac: Defaultnya adalah LF (\n).
+      (ini dilakukan saat kompilasi)
+      
+      "newLine": "crlf"
+    */
+
+    /** 
+    memungkinkan Anda untuk mengontrol apakah deklarasi yang ditandai sebagai internal 
+    harus dihapus dari output JavaScript.
+    
+    
+    "stripInternal": true,
+    */
+
+    /**
+      jika ini true, output JavaScript tidak akan mengandung fungsi bantu, 
+      sehingga terlihat lebih bersih, tetapi Anda mungkin perlu menambahkan 
+      dependensi eksternal atau fungsi bantu jika Anda tidak menggunakannya di tempat lain
+
+      "noEmitHelpers": true,
+    */
+
+    /**
+      jika ini true, memastikan bahwa proses kompilasi tidak menghasilkan output ketika ada kesalahan dalam kode  
+    
+      "noEmitOnError": true,
+    */
+
+    /**
+      digunakan untuk mengontrol perilaku konversi enumerasi konstan (const enum) 
+      saat melakukan kompilasi. Secara khusus, opsi ini menentukan apakah TypeScript 
+      harus mempertahankan const enum dalam kode yang dihasilkan atau menghapusnya
+
+      "preserveConstEnums": true
+    */ "preserveConstEnums": true,
+
+    /**
+      menentukan bahwa semua file deklarasi akan ditempatkan di dalam folder 
+      root (./) di root proyek Anda 
+      
+      "declarationDir": "./",
+    */
+
+    /* Interop Constraints */
+    /** 
+      memastikan bahwa setiap file diperlakukan sebagai modul terpisah yang dapat dikompilasi 
+      secara independen. Ini berguna untuk proyek yang menggunakan alat pengembangan lain 
+      dan membantu menjaga praktik pengkodean yang baik dengan meminimalkan ketergantungan 
+      antara file.
+      
+      "isolatedModules": true,
+    */
+
+    /** 
+      mempertahankan sintaks modul sesuai spesifikasi ES tanpa melakukan transformasi
+
+      "verbatimModuleSyntax": true
+    */
+
+    /** 
+      const a = 10;
+
+      function calculate() {
+          return a * 2; // Ini diperbolehkan karena 'a' digunakan di dalam konteks
+      }
+
+      // Tetapi jika Anda memiliki deklarasi yang tidak digunakan
+      const b = 20; // 'b' tidak digunakan di mana pun
+
+      // TypeScript akan memberikan peringatan bahwa 'b' tidak terpakai
+
+
+      "isolatedDeclarations": true
+    */
+    "isolatedDeclarations": true,
+
+    /** 
+      Berfungsi untuk handling import default
+
+      "allowSyntheticDefaultImports": true
+    */
+    "allowSyntheticDefaultImports": true,
+
+    /** 
+      Berfungsi untuk membantu dalam menggunakan berbagai jenis module (ES6 dan commonjs)
+
+      "esModuleInterop": true
+    */
+    "esModuleInterop": true,
+
+    /**
+      Handling jalur symlinks
+
+      "preserveSymlinks": true,
+    */
+
+    /** 
+      untuk menjaga konsistensi penamaan file di seluruh proyek TypeScript
+      
+      "forceConsistentCasingInFileNames": true
+    */
+    "forceConsistentCasingInFileNames": true,
+
+    /* Type Checking */
+    /** 
+      jika tipe ini diaktifkan, maka akan mengaktifkan 
+      strictNullChecks, noImplicitAny, strictFunctionTypes, strictBindCallApply,
+      strictPropertyInitialization, noImplicitThis, alwaysStrict
+
+      "strict": true
+    */
+    "strict": true /* Enable all strict type-checking options. */,
+
+    /** 
+      Mencegah penggunaan tipe any
+
+      "noImplicitAny": true
+    */
+    "noImplicitAny": true,
+
+    /** 
+      handling konsep null
+      
+      "strictNullChecks": true
+    */
+    "strictNullChecks": true,
+
+    /** 
+      meningkatkan keamanan tipe dengan memperketat pemeriksaan kesesuaian tipe fungsi.
+
+      "strictFunctionTypes": true,
+    */
+    "strictFunctionTypes": true,
+
+    /**
+      Handling permasalahan jika salah dalam proses memanggil bind, call, dan apply
+
+      "strictBindCallApply": true,
+    */
+
+    /**
+      jika ada proses inisialisasi constructor, maka wajib di assign
+
+      "strictPropertyInitialization": true,
+    */
+    "strictPropertyInitialization": true,
+
+    /**
+      menyediakan implementasi untuk metode return jika objek iterator Anda mengizinkan penghentian iterasi secara dini. 
+      
+      "strictBuiltinIteratorReturn": true,
+    */
+
+    /**
+      harus menentukan tipe untuk this
+      
+      function logMessage(this: { message: string }) {
+          console.log(this.message);
+      }
+
+      const obj = { message: "Hello, World!" };
+      logMessage.call(obj); // Pastikan untuk memanggil dengan konteks yang tepat
+ 
+      "noImplicitThis": true,
+    */
+
+    /**
+      Di dalam try...catch, error akan bertipe unknown, bukan any
+
+      "useUnknownInCatchVariables": true,
+    */
+    "useUnknownInCatchVariables": true,
+
+    /**
+      menambahkan direktif 'use strict';  
+    
+      "alwaysStrict": true,
+    */
+    "alwaysStrict": true,
+
+    /**
+      Bertujuan agar apabila ada variable yang tidak terpakai,
+      maka akan diberikan error
+
+      "noUnusedLocals": true,
+    */
+    "noUnusedLocals": true,
+
+    /**
+      Deteksi parameter yang tidak digunakan dalam function
+
+      "noUnusedParameters": true,
+    */
+    "noUnusedParameters": true,
+
+    /** 
+      interface User {
+          id: number;
+          name?: string; // Properti opsional
+      }
+
+      const user: User = {
+          id: 1,
+      };
+
+      // Dengan exactOptionalPropertyTypes diaktifkan, TypeScript memperlakukan user.name sebagai string | undefined
+      const userName: string = user.name; // Ini akan menghasilkan error karena `user.name` bisa undefined
+
+
+      "exactOptionalPropertyTypes": true,
+    */
+    "exactOptionalPropertyTypes": true,
+
+    /** 
+      Akan memberikan kesalahan apabila return dari function tidak sesuai dengan tipe data
+      "noImplicitReturns": true,
+    */
+    "noImplicitReturns": true,
+
+    /** 
+      memberikan peringatan atau kesalahan jika ada kasus dalam pernyataan switch 
+      yang tidak diakhiri dengan pernyataan break, return, atau throw
+      const value = 2;
+
+      switch (value) {
+          case 1:
+              console.log("Value is 1");
+              // TypeScript akan memberikan peringatan di sini
+              // karena tidak ada break
+              break;
+          case 2:
+              console.log("Value is 2");
+              break;
+          case 3:
+              console.log("Value is 3");
+              break;
+      }
+
+      "noFallthroughCasesInSwitch": true,
+    */
+    "noFallthroughCasesInSwitch": true,
+
+    /** 
+    membantu memastikan bahwa Anda selalu menangani kemungkinan undefined saat 
+    mengakses elemen dalam array atau objek
+    
+    const arr: number[] = [1, 2, 3];
+    const value = arr[3]; // value dianggap number | undefined
+
+    if (value !== undefined) {
+        console.log(value * 2); // Aman untuk digunakan
+    }
+
+    "noUncheckedIndexedAccess": true,
+    */
+
+    /** 
+    wajib menggunakan override untuk meng-override method atau property pada class induk
+    class Dog extends Animal {
+        override speak() { // Harus menggunakan `override`
+            console.log("Bark");
+        }
+    }
+
+    "noImplicitOverride": true,
+    */
+    "noImplicitOverride": true,
+
+    /** 
+    opsi ini mencegah TypeScript untuk mengizinkan akses properti secara langsung 
+    menggunakan dot notation (misalnya obj.properti) pada objek yang memiliki index signature. 
+    Sebagai gantinya, akses properti hanya diperbolehkan menggunakan bracket notation 
+    (misalnya obj["properti"]).
+    
+    "noPropertyAccessFromIndexSignature": true,
+    */
+
+    /* Completeness */
+    // "skipDefaultLibCheck": true,                      /* Skip type checking .d.ts files that are included with TypeScript. */
+    "skipLibCheck": true /* Skip type checking all .d.ts files. */
+  }
+}

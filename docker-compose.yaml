@@ -1,0 +1,13 @@
+services:
+  postgres:
+    container_name: postgres_container_pantera
+    image: postgres:16.3-alpine3.20
+    restart: always
+    environment:
+      - POSTGRES_USER=hafiihza
+      - POSTGRES_DB=pantera
+      - POSTGRES_PASSWORD=farhana
+    ports:
+      - '5432:5432'
+    volumes:
+      - ./docker-volumes/postgres:/var/lib/postgresql

@@ -1,0 +1,15 @@
+node_modules/
+dist/
+build/
+*.log
+*.tmp
+*.bak
+*.swp
+.env
+.git/
+.DS_Store
+Thumbs.db
+tests/
+__tests__/
+spec/
+.idea/
