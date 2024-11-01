@@ -5,7 +5,7 @@ import helmet from 'helmet';
 import hpp from 'hpp';
 import cors from 'cors';
 import compression from 'compression';
-import BaseRouting from './router';
+// import BaseRouting from './router';
 import { winstonLogger } from '@util/logger_util';
 import { Logger } from 'winston';
 import { CustomError } from '@util/error_util';
@@ -21,7 +21,7 @@ class Server {
   public starting = (): void => {
     this.setupSecurity(this.app);
     this.setupRegular(this.app);
-    this.setupRoutes(this.app);
+    // this.setupRoutes(this.app);
     this.setupErrorHandling(this.app);
     this.start(this.app);
   };
@@ -76,9 +76,9 @@ class Server {
     );
   };
 
-  private setupRoutes = (app: Application): void => {
-    BaseRouting(app);
-  };
+  // private setupRoutes = (app: Application): void => {
+  //   BaseRouting(app);
+  // };
 
   private setupErrorHandling(app: Application): void {
     app.use((error: CustomError, _req: Request, res: Response, next: NextFunction) => {
