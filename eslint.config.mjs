@@ -4,7 +4,18 @@ import tseslint from 'typescript-eslint';
 
 export default [
   { files: ['**/*.{js,mjs,cjs}'] },
-  { ignores: ['config/*', 'seeders/*', 'migrations/*', '.dockerignore', 'Dockerfile', 'Dockerfile.dev', 'Jenkinsfile'] },
+  {
+    ignores: [
+      'config/*',
+      'seeders/*',
+      'migrations/*',
+      '.dockerignore',
+      'Dockerfile',
+      'Dockerfile.dev',
+      'Jenkinsfile',
+      'dist/*' // Tambahkan 'dist/*' di sini
+    ]
+  },
   { languageOptions: { globals: globals.browser, parser: '@typescript-eslint/parser' } },
   pluginJs.configs.recommended,
   ...tseslint.configs.recommended,
