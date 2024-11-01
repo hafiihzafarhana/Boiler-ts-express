@@ -3,12 +3,12 @@ name: Backend CI/CD
 on:
   push:
     paths:
-      - 'backend/**'
+      - '**'
     branches:
       - main
   pull_request:
     paths:
-      - 'backend/**'
+      - '**'
 
 jobs:
   build:
