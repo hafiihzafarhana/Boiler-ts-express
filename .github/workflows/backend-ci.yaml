@@ -24,16 +24,13 @@ jobs:
 
       - name: Install backend dependencies
         run: |
-          cd backend
           npm install
 
       - name: Run lint check
         run: |
-          cd backend
           npm run lint  # Ini akan gagal jika ada warning
 
       - name: Build backend
         if: github.ref == 'refs/heads/main'
         run: |
-          cd backend
           npm run build
