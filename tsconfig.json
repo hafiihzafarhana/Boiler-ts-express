@@ -159,7 +159,9 @@
       "@util/*": ["src/utils/*"],
       "@model/*": ["src/models/*"],
       "@route/*": ["src/routes/*"],
-      "@infrastructure/*": ["src/infrastructures/*"]
+      "@infrastructure/*": ["src/infrastructures/*"],
+      "@module/user/v1/*": ["src/modules/v1/user/*"],
+      "@module/token/v1/*": ["src/modules/v1/token/*"]
       // .....
     },
 

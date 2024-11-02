@@ -1,8 +1,11 @@
 import { Application } from 'express';
 
-const baseUrl = 'api/v1';
-const BaseRouting = (app: Application): void => {
+export const BaseRoutingV1 = (app: Application): void => {
+  const baseUrl = 'api/v1';
   app.use(baseUrl);
 };
 
-export default BaseRouting;
+export const BaseRoutingV2 = (app: Application): void => {
+  const baseUrl = 'api/v2';
+  app.use(baseUrl);
+};
